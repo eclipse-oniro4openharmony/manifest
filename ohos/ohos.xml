@@ -3,6 +3,8 @@
   <remote fetch="." name="origin" review="https://openharmony.gitee.com/openharmony/"/>
   <default remote="origin" revision="OpenHarmony-4.0-Release" sync-j="4" />
 
+  <remote name="gitee" fetch="https://gitee.com/openharmony/" />
+
   <project name="inputmethod_imf" path="base/inputmethod/imf" groups="default,ohos:standard,ohos:system"/>
   <project name="ability_ability_lite" path="foundation/ability/ability_lite" groups="default,ohos:mini,ohos:small"/>
   <project name="arkui_ace_engine_lite" path="foundation/arkui/ace_engine_lite" groups="default,ohos:mini,ohos:small"/>
@@ -155,8 +157,8 @@
   <project name="communication_dhcp" path="foundation/communication/dhcp" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="developtools_bytrace" path="developtools/bytrace" groups="default,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="developtools_hdc" path="developtools/hdc" groups="default,ohos:standard,ohos:system,ohos:chipset"/>
-  <project name="developtools_smartperf_host" path="developtools/smartperf_host" groups="default,ohos:standard,ohos:system"/>
-  <project name="developtools_profiler" path="developtools/profiler" groups="default,ohos:standard,ohos:system,ohos:chipset"/>
+  <project name="developtools_smartperf_host" remote="gitee" path="developtools/smartperf_host" groups="default,ohos:standard,ohos:system"/>
+  <project name="developtools_profiler" remote="gitee" path="developtools/profiler" groups="default,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="developtools_hiperf" path="developtools/hiperf" groups="default,ohos:standard,ohos:system"/>
   <project name="developtools_global_resource_tool" path="developtools/global_resource_tool" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system"/>
   <project name="distributeddatamgr_relational_store" path="foundation/distributeddatamgr/relational_store" groups="default,ohos:standard,ohos:system"/>
@@ -169,13 +171,13 @@
   <project name="ability_dmsfwk" path="foundation/ability/dmsfwk" groups="default,ohos:standard,ohos:system"/>
   <project name="systemabilitymgr_safwk" path="foundation/systemabilitymgr/safwk" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="systemabilitymgr_samgr" path="foundation/systemabilitymgr/samgr" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
-  <project name="docs" path="docs" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system"/>
+  <project name="docs" remote="gitee" path="docs" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system"/>
   <project name="filemanagement_dfs_service" path="foundation/filemanagement/dfs_service" groups="default,ohos:standard,ohos:system"/>
   <project name="filemanagement_file_api" path="foundation/filemanagement/file_api" groups="default,ohos:standard,ohos:system"/>
   <project name="filemanagement_storage_service" path="foundation/filemanagement/storage_service" groups="default,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="filemanagement_user_file_service" path="foundation/filemanagement/user_file_service" groups="default,ohos:standard,ohos:system"/>
   <project name="filemanagement_app_file_service" path="foundation/filemanagement/app_file_service" groups="default,ohos:standard,ohos:system"/>
-  <project name="global_i18n" path="base/global/i18n" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system"/>
+  <project name="global_i18n" remote="gitee" path="base/global/i18n" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system"/>
   <project name="global_resource_management" path="base/global/resource_management" groups="default,ohos:standard,ohos:system"/>
   <project name="global_timezone" path="base/global/timezone" groups="default,ohos:standard,ohos:system"/>
   <project name="graphic_graphic_2d" path="foundation/graphic/graphic_2d" groups="default,ohos:standard,ohos:system,ohos:chipset"/>
@@ -207,7 +209,7 @@
   <project name="multimedia_camera_framework" path="foundation/multimedia/camera_framework" groups="default,ohos:standard,ohos:system"/>
   <project name="multimedia_histreamer" path="foundation/multimedia/histreamer" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system"/>
   <project name="multimedia_player_framework" path="foundation/multimedia/player_framework" groups="default,ohos:standard,ohos:system"/>
-  <project name="multimedia_av_codec" path="foundation/multimedia/av_codec" groups="default,ohos:standard,ohos:system"/>
+  <project name="multimedia_av_codec" remote="gitee" path="foundation/multimedia/av_codec" groups="default,ohos:standard,ohos:system"/>
   <project name="multimedia_media_library" path="foundation/multimedia/media_library" groups="default,ohos:standard,ohos:system"/>
   <project name="multimedia_image_framework" path="foundation/multimedia/image_framework" groups="default,ohos:standard,ohos:system"/>
   <project name="multimedia_av_session" path="foundation/multimedia/av_session" groups="default,ohos:standard,ohos:system"/>
@@ -283,12 +285,12 @@
   <project name="third_party_openh264" path="third_party/openh264" groups="default,ohos:standard,ohos:system"/>
   <project name="update_update_app" path="base/update/update_app" groups="default,ohos:standard,ohos:system"/>
   <project name="update_packaging_tools" path="base/update/packaging_tools" groups="default,ohos:standard,ohos:system"/>
-  <project name="update_updater" path="base/update/updater" groups="default,ohos:standard,ohos:system"/>
+  <project name="update_updater" remote="gitee" path="base/update/updater" groups="default,ohos:standard,ohos:system"/>
   <project name="update_update_service" path="base/update/updateservice" groups="default,ohos:standard,ohos:system"/>
   <project name="update_sys_installer" path="base/update/sys_installer" groups="default,ohos:standard,ohos:system"/>
   <project name="commonlibrary_c_utils" path="commonlibrary/c_utils" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="usb_usb_manager" path="base/usb/usb_manager" groups="default,ohos:standard,ohos:system"/>
-  <project name="xts_acts" path="test/xts/acts" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system"/>
+  <project name="xts_acts" remote="gitee" path="test/xts/acts" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system"/>
   <project name="xts_device_attest" path="test/xts/device_attest" groups="default,ohos:standard,ohos:system"/>
   <project name="xts_device_attest_lite" path="test/xts/device_attest_lite" groups="default,ohos:mini,ohos:small,ohos:system"/>
   <project name="distributedhardware_device_manager" path="foundation/distributedhardware/device_manager" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
@@ -326,7 +328,7 @@
   <project name="commonlibrary_memory_utils" path="commonlibrary/memory_utils" groups="default,ohos:standard,ohos:system"/>
   <project name="msdp_device_status" path="base/msdp/device_status" groups="default,ohos:standard,ohos:system"/>
   <project name="developtools_syscap_codec" path="developtools/syscap_codec" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
-  <project name="third_party_mindspore" path="third_party/mindspore" clone-depth="1" groups="default,ohos:standard,ohos:system">
+  <project name="third_party_mindspore" remote="gitee" path="third_party/mindspore" clone-depth="1" groups="default,ohos:standard,ohos:system">
       <linkfile dest="foundation/ai/mindspore" src="."/>
   </project>
   <project name="web_webview" path="base/web/webview" groups="default,ohos:standard,ohos:system"/>
@@ -345,7 +347,7 @@
   <project name="security_privacy_center" path="applications/standard/security_privacy_center" groups="default,ohos:standard,ohos:system"/>
   <project name="ai_neural_network_runtime" path="foundation/ai/neural_network_runtime" groups="default,ohos:standard,ohos:system"/>
   <project name="third_party_libbpf" path="third_party/libbpf" groups="default,ohos:standard,ohos:system,ohos:chipset"/>
-  <project name="third_party_vk-gl-cts" path="third_party/vk-gl-cts" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
+  <project name="third_party_vk-gl-cts" remote="gitee" path="third_party/vk-gl-cts" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="third_party_spirv-tools" path="third_party/spirv-tools" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="third_party_glslang" path="third_party/glslang" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="third_party_spirv-headers" path="third_party/spirv-headers" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
