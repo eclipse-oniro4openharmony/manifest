@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote name="origin" fetch="." review="https://openharmony.gitee.com/openharmony/"/>
+  <remote name="origin" fetch="https://github.com/eclipse-oniro-mirrors" review="https://openharmony.gitee.com/openharmony/"/>
   
   <default remote="origin" revision="monthly_20230815" sync-j="4"/>
   
