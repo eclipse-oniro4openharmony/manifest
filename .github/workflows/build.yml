@@ -1,0 +1,115 @@
+name: Pull Sources from Manifest and build
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+env:
+  CI_MANIFEST_URL: ${{ github.server_url }}/${{ github.repository }}
+  CI_MANIFEST_NAME: default.xml
+  CI_MANIFEST_BRANCH: ${{ github.ref_name }}
+  CI_RUNNER_PERSISTENT_STORAGE: /home/github-runner/persistent_storage
+  CI_DOCKER_PERSISTENT_STORAGE: /home/openharmony/persistent_storage
+
+jobs:
+
+  prepare-image:
+    # workaround to env variable non being available in pull_sources.containers.volumes
+    # this job simply forwards env variables to job's output. 
+    runs-on: self-hosted
+    outputs:
+      runner_persistent_storage: ${{ env.CI_RUNNER_PERSISTENT_STORAGE }}
+      docker_persistent_storage: ${{ env.CI_DOCKER_PERSISTENT_STORAGE }}
+    steps:       
+      - run: true
+
+  pull_sources:
+    runs-on: self-hosted
+    needs: [prepare-image]
+
+    container:
+      image: swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_standard:3.2
+      volumes:
+        - ${{ needs.prepare-image.outputs.runner_persistent_storage }}:${{ needs.prepare-image.outputs.docker_persistent_storage }}
+
+    steps:
+
+      - name: Set up git-repo
+        run: |
+          if [ ! -f /bin/repo ]; then
+            curl https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 -o /bin/repo
+            chmod a+x /bin/repo
+          fi
+
+      - name: Sync mirror
+        run: |
+          # Create/maintain a mirror of all manifest repositories in runner
+          # persistent storage, and use that as reference when initializing the
+          # build repo, effectively reducing the time spent fetching git repos to
+          # almost nothing.
+          #
+          # If for some reason, the repo mirror becomes corrupted, a pipeline with
+          # $REBUILD_REPO_MIRROR set to a non-empty value will remove the entire
+          # mirror, and rebuild it from scratch.
+          #
+          # Note the use of fd 9 to hold a lock while accessing the $REPO_MIRROR
+          # path, so we can handle parallel jobs.  First we open the lock file on fd
+          # 9, then we lock it, and close/unlock it after repo sync.
+          if [ -n "$CI_DOCKER_PERSISTENT_STORAGE" ] ; then
+            REPO_MIRROR="$CI_DOCKER_PERSISTENT_STORAGE/repo-mirrors" ;
+            mkdir -p $(dirname $REPO_MIRROR) ;
+            exec 9>$REPO_MIRROR.lock ; flock 9 ;
+            if [ -n "$REBUILD_REPO_MIRROR" ] ; then
+              rm -rf "$REPO_MIRROR" ;
+            fi ;
+            if [ ! -e "$REPO_MIRROR" ] ; then
+              echo "Creating new repo mirror @ $REPO_MIRROR" ;
+              mkdir -p "$REPO_MIRROR" ;
+              pushd "$REPO_MIRROR" ;
+              repo init -u "$CI_MANIFEST_URL" -m "$CI_MANIFEST_NAME" -b "$CI_MANIFEST_BRANCH" --mirror ;
+            else
+              echo "Reusing repo mirror @ $REPO_MIRROR" ;
+              pushd "$REPO_MIRROR" ;
+              repo init -u "$CI_MANIFEST_URL" -m "$CI_MANIFEST_NAME" -b "$CI_MANIFEST_BRANCH";
+            fi ;
+            repo sync --no-repo-verify --force-sync;
+            repo forall -c 'git lfs pull'
+            popd ;
+          fi
+
+      - name: Fetch sources
+        run: |
+          # Create the build environment in a repo subdir
+          mkdir repo && cd repo
+          repo init \
+            $(test -n "${CI_DOCKER_PERSISTENT_STORAGE:-}" && echo --reference "$CI_DOCKER_PERSISTENT_STORAGE"/repo-mirrors) \
+            --manifest-url "$CI_MANIFEST_URL" \
+            --manifest-name "$CI_MANIFEST_NAME" \
+            --manifest-branch "$CI_MANIFEST_BRANCH"
+          repo sync --no-repo-verify --force-sync
+          repo forall -c 'git lfs pull'
+          # Release repo mirror lock if held
+          if [ -n "$REPO_MIRROR_ARG" ] ; then exec 9>&- ; fi
+
+      - name: Download prebuilts
+        run: |
+          mkdir -p $CI_DOCKER_PERSISTENT_STORAGE/openharmony_prebuilts
+          ln -sf $CI_DOCKER_PERSISTENT_STORAGE/openharmony_prebuilts openharmony_prebuilts
+          cd repo
+          ./build/prebuilts_download.sh
+
+      - name: Build
+        run: |
+          # a shared ccache on persistent storage is used to speed up the build 
+          cd repo
+          ./build.sh --ccache --share-ccache "$CI_DOCKER_PERSISTENT_STORAGE"/build-ccache --product-name rk3568
+
+      - name: Archive board image artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: rk3568_${{ github.ref_name }}
+          path: /__w/oniro4openharmony-manifest/oniro4openharmony-manifest/repo/out/rk3568/packages/phone/images/*
