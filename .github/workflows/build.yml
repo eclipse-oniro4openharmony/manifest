@@ -9,9 +9,7 @@ on:
       - '*'
 
 env:
-  CI_MANIFEST_URL: ${{ github.server_url }}/${{ github.repository }}
   CI_MANIFEST_NAME: default.xml
-  CI_MANIFEST_BRANCH: ${{ github.ref_name }}
   CI_RUNNER_PERSISTENT_STORAGE: /home/github-runner/persistent_storage
   CI_DOCKER_PERSISTENT_STORAGE: /home/openharmony/persistent_storage
 
@@ -45,6 +43,24 @@ jobs:
             chmod a+x /bin/repo
           fi
 
+      - uses: actions/checkout@v4
+
+      - name: Set up manifest workspace
+        run: |
+          # Tell git this repository is safe even if cloned with a different uid
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+
+          # The repo tool seems to insist on having a branch checked out or
+          # something like that... Without this we get errors like
+          #     fatal: couldn't find remote ref refs/heads/master
+          cd $GITHUB_WORKSPACE
+          git checkout -b master
+
+          # The repo command does not like shallow repos
+          if [ "$(git rev-parse --is-shallow-repository)" = "true" ] ; then
+            git fetch --unshallow ;
+          fi
+
       - name: Sync mirror
         run: |
           # Create/maintain a mirror of all manifest repositories in runner
@@ -70,11 +86,11 @@ jobs:
               echo "Creating new repo mirror @ $REPO_MIRROR" ;
               mkdir -p "$REPO_MIRROR" ;
               pushd "$REPO_MIRROR" ;
-              repo init -u "$CI_MANIFEST_URL" -m "$CI_MANIFEST_NAME" -b "$CI_MANIFEST_BRANCH" --mirror ;
+              repo init -u "$GITHUB_WORKSPACE" -m "$CI_MANIFEST_NAME" --mirror ;
             else
               echo "Reusing repo mirror @ $REPO_MIRROR" ;
               pushd "$REPO_MIRROR" ;
-              repo init -u "$CI_MANIFEST_URL" -m "$CI_MANIFEST_NAME" -b "$CI_MANIFEST_BRANCH";
+              repo init -u "$GITHUB_WORKSPACE" -m "$CI_MANIFEST_NAME";
             fi ;
             repo sync --no-repo-verify --force-sync;
             repo forall -c 'git lfs pull'
@@ -87,9 +103,8 @@ jobs:
           mkdir repo && cd repo
           repo init \
             $(test -n "${CI_DOCKER_PERSISTENT_STORAGE:-}" && echo --reference "$CI_DOCKER_PERSISTENT_STORAGE"/repo-mirrors) \
-            --manifest-url "$CI_MANIFEST_URL" \
-            --manifest-name "$CI_MANIFEST_NAME" \
-            --manifest-branch "$CI_MANIFEST_BRANCH"
+            --manifest-url "$GITHUB_WORKSPACE" \
+            --manifest-name "$CI_MANIFEST_NAME"
           repo sync --no-repo-verify --force-sync
           repo forall -c 'git lfs pull'
           # Release repo mirror lock if held
