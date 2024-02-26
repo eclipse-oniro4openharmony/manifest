@@ -20,7 +20,7 @@ jobs:
   prepare-image:
     # workaround to env variable non being available in pull_sources.containers.volumes
     # this job simply forwards env variables to job's output. 
-    runs-on: self-hosted
+    runs-on: oniro-runner
     outputs:
       runner_persistent_storage: ${{ env.CI_RUNNER_PERSISTENT_STORAGE }}
       docker_persistent_storage: ${{ env.CI_DOCKER_PERSISTENT_STORAGE }}
@@ -28,7 +28,7 @@ jobs:
       - run: true
 
   pull_sources:
-    runs-on: self-hosted
+    runs-on: oniro-runner
     needs: [prepare-image]
 
     container:
