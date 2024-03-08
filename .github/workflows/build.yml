@@ -21,6 +21,30 @@ jobs:
 
     steps:
 
+      # cache gitee repositories that often fail to fetch because of network problems
+      - name: Cache restore gitee repositories
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            /bin/repo
+            /__w/repo-mirrors/.repo
+            /__w/repo-mirrors/developtools_smartperf_host.git
+            /__w/repo-mirrors/developtools_profiler.git
+            /__w/repo-mirrors/docs.git
+            /__w/repo-mirrors/global_i18n.git
+            /__w/repo-mirrors/multimedia_av_codec.git
+            /__w/repo-mirrors/update_updater.git
+            /__w/repo-mirrors/xts_acts.git
+            /__w/repo-mirrors/third_party_mindspore.git
+            /__w/repo-mirrors/third_party_vk-gl-cts.git
+            /__w/repo-mirrors/device_board_hihope.git
+            /__w/repo-mirrors/device_soc_rockchip.git
+            
+          key:
+            cache-repos-${{ hashFiles('**/*.xml') }} 
+          restore-keys:
+            cache-repos-
+
       - name: Set up git-repo
         run: |
           if [ ! -f /bin/repo ]; then
@@ -60,6 +84,26 @@ jobs:
             echo "Reusing repo mirror @ $REPO_MIRROR" ;
           fi ;
 
+      - name: Cache save gitee repositories
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            /bin/repo
+            /__w/repo-mirrors/.repo
+            /__w/repo-mirrors/developtools_smartperf_host.git
+            /__w/repo-mirrors/developtools_profiler.git
+            /__w/repo-mirrors/docs.git
+            /__w/repo-mirrors/global_i18n.git
+            /__w/repo-mirrors/multimedia_av_codec.git
+            /__w/repo-mirrors/update_updater.git
+            /__w/repo-mirrors/xts_acts.git
+            /__w/repo-mirrors/third_party_mindspore.git
+            /__w/repo-mirrors/third_party_vk-gl-cts.git
+            /__w/repo-mirrors/device_board_hihope.git
+            /__w/repo-mirrors/device_soc_rockchip.git
+            
+          key:
+            cache-repos-${{ hashFiles('**/*.xml') }} 
 
       - name: Fetch sources
         run: |
