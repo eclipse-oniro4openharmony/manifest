@@ -86,5 +86,5 @@ jobs:
       - name: Archive board image artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: rk3568_${{ github.ref_name }}
-          path: /__w/oniro4openharmony-manifest/oniro4openharmony-manifest/repo/out/rk3568/packages/phone/images/*
+          name: rk3568
+          path: /__w/manifest/manifest/repo/out/rk3568/packages/phone/images/*
