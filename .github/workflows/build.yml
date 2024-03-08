@@ -138,6 +138,13 @@ jobs:
           key:
             cache-openharmony-prebuilts-${{ hashFiles('**/*.xml') }} 
 
+      - name: ccache
+        uses: actions/cache@v4
+        with:
+          path: /github/home/.ccache
+          key: build-ccache-${{ github.sha }}
+          restore-keys: build-ccache-
+
       - name: Build
         run: |
           # a shared ccache is used to speed up the build 
