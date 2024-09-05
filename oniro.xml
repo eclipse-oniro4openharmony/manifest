@@ -172,7 +172,6 @@
   <project name="ability_dmsfwk" path="foundation/ability/dmsfwk" groups="default,ohos:standard,ohos:system"/>
   <project name="systemabilitymgr_safwk" path="foundation/systemabilitymgr/safwk" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="systemabilitymgr_samgr" path="foundation/systemabilitymgr/samgr" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
-  <project name="docs" remote="gitee" path="docs" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system"/>
   <project name="filemanagement_dfs_service" path="foundation/filemanagement/dfs_service" groups="default,ohos:standard,ohos:system"/>
   <project name="filemanagement_file_api" path="foundation/filemanagement/file_api" groups="default,ohos:standard,ohos:system"/>
   <project name="filemanagement_storage_service" path="foundation/filemanagement/storage_service" groups="default,ohos:standard,ohos:system,ohos:chipset"/>
@@ -448,5 +447,5 @@
   <!-- chipsets -->
   <include name="chipsets/dayu200/dayu200.xml" />
   <include name="chipsets/rpi/rpi.xml" />
-  
+
 </manifest>
