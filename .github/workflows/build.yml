@@ -116,27 +116,9 @@ jobs:
           repo sync -c --no-repo-verify --force-sync
           repo forall -c 'git lfs pull'
 
-      - name: Cache restore OpenHarmony prebuilts
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-             /__w/manifest/manifest/openharmony_prebuilts
-          key:
-            cache-openharmony-prebuilts-${{ hashFiles('**/*.xml') }} 
-          restore-keys:
-            cache-openharmony-prebuilts-
-
       - name: Download prebuilts
         run: |
           cd repo && ./build/prebuilts_download.sh
-
-      - name: Cache save OpenHarmony prebuilts
-        uses: actions/cache/save@v4
-        with:
-          path: |
-             /__w/manifest/manifest/openharmony_prebuilts
-          key:
-            cache-openharmony-prebuilts-${{ hashFiles('**/*.xml') }} 
 
       - name: ccache
         uses: actions/cache@v4
