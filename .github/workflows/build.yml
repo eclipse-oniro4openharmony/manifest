@@ -148,7 +148,9 @@ jobs:
       - name: Build
         run: |
           # a shared ccache is used to speed up the build 
-          cd repo && ./build.sh --ccache --product-name rk3568
+          # a 5h timeout is set to prevent the job from exeeding the 6h limit and
+          # allow it to save the ccache and speedup the next run
+          cd repo && timeout 5h ./build.sh --ccache --product-name rk3568
 
       - name: Archive board image artifacts
         uses: actions/upload-artifact@v3
