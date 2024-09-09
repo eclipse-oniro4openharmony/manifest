@@ -1,21 +1,18 @@
 name: Pull Sources from Manifest and build
 
 on:
-  push:
-    branches:
-      - 'OpenHarmony-4.1-Release'
-  pull_request:
-    branches:
-      - 'OpenHarmony-4.1-Release'
-  schedule:
-    - cron: '0 1 * * *'
+  workflow_call:
+    inputs:
+      build-target:
+        required: true
+        type: string
 
 env:
   CI_MANIFEST_NAME: oniro.xml
 
 jobs:
 
-  pull_sources:
+  pull_sources_and_build:
     runs-on: oniro-runner
 
     container:
@@ -132,7 +129,7 @@ jobs:
           # a shared ccache is used to speed up the build 
           # a 5h timeout is set to prevent the job from exeeding the 6h limit and
           # allow it to save the ccache and speedup the next run
-          cd repo && timeout 5h ./build.sh --ccache --product-name rk3568
+          cd repo && timeout 5h ./build.sh --ccache --product-name ${{ inputs.config-path }}
 
       - name: save ccache
         uses: actions/cache/save@v4
@@ -144,5 +141,5 @@ jobs:
       - name: Archive board image artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: rk3568
-          path: /__w/manifest/manifest/repo/out/rk3568/packages/phone/images/*
+          name: ${{ inputs.config-path }}
+          path: /__w/manifest/manifest/repo/out/${{ inputs.config-path }}/packages/phone/images/*

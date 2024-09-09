@@ -1,0 +1,21 @@
+name: Trigger build targets
+
+on:
+  push:
+    branches:
+      - 'OpenHarmony-4.1-Release'
+  pull_request:
+    branches:
+      - 'OpenHarmony-4.1-Release'
+  schedule:
+    - cron: '0 1 * * *'
+
+jobs:
+  build-rk3568:
+    uses: ./.github/workflows/build.yml
+    with:
+      build-target: rk3568
+  build-rpi4b:
+    uses: ./.github/workflows/build.yml
+    with:
+      build-target: rpi4b
