@@ -126,10 +126,17 @@ jobs:
 
       - name: Build
         run: |
+          cd repo
+
+          # if building rpi4b, apply patches to the system
+          if [ "${{ inputs.build-target }}" = "rpi4b" ]; then
+            ./device/board/rpi/system_patch/system_patch.sh
+          fi
+
           # a shared ccache is used to speed up the build 
           # a 5h timeout is set to prevent the job from exeeding the 6h limit and
           # allow it to save the ccache and speedup the next run
-          cd repo && timeout 5h ./build.sh --ccache --product-name ${{ inputs.config-path }}
+          timeout 5h ./build.sh --ccache --product-name ${{ inputs.config-path }}
 
       - name: save ccache
         uses: actions/cache/save@v4
