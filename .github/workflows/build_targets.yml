@@ -11,10 +11,10 @@ on:
     - cron: '0 1 * * *'
 
 jobs:
-  build-rk3568:
-    uses: ./.github/workflows/build.yml
-    with:
-      build-target: rk3568
+  # build-rk3568:
+  #   uses: ./.github/workflows/build.yml
+  #   with:
+  #     build-target: rk3568
   build-rpi4:
     uses: ./.github/workflows/build.yml
     with:
