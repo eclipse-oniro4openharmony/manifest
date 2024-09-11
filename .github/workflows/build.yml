@@ -138,6 +138,11 @@ jobs:
           # allow it to save the ccache and speedup the next run
           timeout 5h ./build.sh --ccache --product-name ${{ inputs.build-target }}
 
+          # if building rpi4, build rpi_image.img
+          if [ "${{ inputs.build-target }}" = "rpi4" ]; then
+            ./build.sh --product-name ${{ inputs.build-target }} --ccache --build-target rpi_image
+          fi
+
       - name: save ccache
         uses: actions/cache/save@v4
         if: always()
@@ -148,5 +153,5 @@ jobs:
       - name: Archive board image artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ inputs.build-target }}
+          name: ${{ inputs.build-target }}-images
           path: /__w/manifest/manifest/repo/out/${{ inputs.build-target }}/packages/phone/images/*
