@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote fetch="https://github.com/eclipse-oniro-mirrors" name="origin" review="https://openharmony.gitee.com/openharmony/"/>
+  <default remote="origin" revision="OpenHarmony-5.0.0-Release" sync-j="4" />
+
+  <remote name="oniro4openharmony" fetch="https://github.com/eclipse-oniro4openharmony/" />
+
+  <project name="device_board_rpi" path="device/board/rpi" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:chipset" remote="oniro4openharmony"/>
+  <project name="device_soc_broadcom" path="device/soc/broadcom" groups="default,ohos:standard,ohos:chipset" remote="oniro4openharmony"/>
+  <project name="vendor_iscas" path="vendor/iscas" groups="default,ohos:mini,ohos:standard,ohos:chipset" remote="oniro4openharmony"/>
+</manifest>
