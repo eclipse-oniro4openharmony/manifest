@@ -1,0 +1,19 @@
+name: Trigger build targets
+
+on:
+  push:
+    branches:
+      - 'OpenHarmony-5.0.0-Release'
+  pull_request:
+    branches:
+      - 'OpenHarmony-5.0.0-Release'
+
+jobs:
+  # build-rk3568:
+  #   uses: ./.github/workflows/build.yml
+  #   with:
+  #     build-target: rk3568
+  build-rpi4:
+    uses: ./.github/workflows/build.yml
+    with:
+      build-target: rpi4

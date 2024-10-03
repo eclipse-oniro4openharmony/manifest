@@ -1,0 +1,157 @@
+name: Pull Sources from Manifest and build
+
+on:
+  workflow_call:
+    inputs:
+      build-target:
+        required: true
+        type: string
+
+env:
+  CI_MANIFEST_NAME: oniro.xml
+
+jobs:
+
+  pull_sources_and_build:
+    runs-on: oniro-runner
+
+    container:
+      image: swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_standard:3.2
+
+    steps:
+
+      # cache gitee repositories that often fail to fetch because of network problems
+      - name: Cache restore gitee repositories
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            /bin/repo
+            /__w/repo-mirrors/.repo
+            /__w/repo-mirrors/developtools_smartperf_host.git
+            /__w/repo-mirrors/developtools_profiler.git
+            /__w/repo-mirrors/global_i18n.git
+            /__w/repo-mirrors/multimedia_av_codec.git
+            /__w/repo-mirrors/update_updater.git
+            /__w/repo-mirrors/xts_acts.git
+            /__w/repo-mirrors/third_party_mindspore.git
+            /__w/repo-mirrors/third_party_vk-gl-cts.git
+            /__w/repo-mirrors/device_board_hihope.git
+            /__w/repo-mirrors/device_soc_rockchip.git
+            
+          key:
+            cache-repos-${{ hashFiles('**/*.xml') }} 
+          restore-keys:
+            cache-repos-
+
+      - name: Set up git-repo
+        run: |
+          if [ ! -f /bin/repo ]; then
+            curl https://storage.googleapis.com/git-repo-downloads/repo -o /bin/repo
+            chmod a+x /bin/repo
+          fi
+
+      - uses: actions/checkout@v4
+
+      - name: Set up manifest workspace
+        run: |
+          # Tell git this repository is safe even if cloned with a different uid
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+
+          # The repo tool seems to insist on having a branch checked out or
+          # something like that... Without this we get errors like
+          #     fatal: couldn't find remote ref refs/heads/master
+          cd $GITHUB_WORKSPACE
+          git checkout -b master
+
+          # The repo command does not like shallow repos
+          if [ "$(git rev-parse --is-shallow-repository)" = "true" ] ; then
+            git fetch --unshallow ;
+          fi
+
+      - name: Sync mirror
+        run: |
+          REPO_MIRROR="/__w/repo-mirrors" ;
+          if [ ! -e "$REPO_MIRROR" ] ; then
+            echo "Creating new repo mirror @ $REPO_MIRROR" ;
+            mkdir -p "$REPO_MIRROR" ;
+            pushd "$REPO_MIRROR" ;
+            repo init -u "$GITHUB_WORKSPACE" -m "$CI_MANIFEST_NAME" --mirror ;
+            repo sync -c --no-repo-verify --force-sync;
+            popd ;
+          else
+            echo "Reusing repo mirror @ $REPO_MIRROR" ;
+          fi ;
+
+      - name: Cache save gitee repositories
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            /bin/repo
+            /__w/repo-mirrors/.repo
+            /__w/repo-mirrors/developtools_smartperf_host.git
+            /__w/repo-mirrors/developtools_profiler.git
+            /__w/repo-mirrors/global_i18n.git
+            /__w/repo-mirrors/multimedia_av_codec.git
+            /__w/repo-mirrors/update_updater.git
+            /__w/repo-mirrors/xts_acts.git
+            /__w/repo-mirrors/third_party_mindspore.git
+            /__w/repo-mirrors/third_party_vk-gl-cts.git
+            /__w/repo-mirrors/device_board_hihope.git
+            /__w/repo-mirrors/device_soc_rockchip.git
+            
+          key:
+            cache-repos-${{ hashFiles('**/*.xml') }} 
+
+      - name: Fetch sources
+        run: |
+          # Create the build environment in a repo subdir
+          mkdir repo && cd repo
+          repo init \
+            --reference /__w/repo-mirrors \
+            --manifest-url "$GITHUB_WORKSPACE" \
+            --manifest-name "$CI_MANIFEST_NAME"
+          repo sync -c --no-repo-verify --force-sync
+          repo forall -c 'git lfs pull'
+
+      - name: Download prebuilts
+        run: |
+          cd repo && ./build/prebuilts_download.sh
+
+      - name: restore ccache
+        uses: actions/cache/restore@v4
+        with:
+          path: /github/home/.ccache
+          key: build-ccache-${{ github.sha }}
+          restore-keys: build-ccache-
+
+      - name: Build
+        run: |
+          cd repo
+
+          # if building rpi4, apply patches to the system
+          if [ "${{ inputs.build-target }}" = "rpi4" ]; then
+            ./device/board/rpi/system_patch/system_patch.sh
+          fi
+
+          # a shared ccache is used to speed up the build 
+          # a 5h timeout is set to prevent the job from exeeding the 6h limit and
+          # allow it to save the ccache and speedup the next run
+          timeout 5h ./build.sh --ccache --product-name ${{ inputs.build-target }}
+
+          # if building rpi4, build rpi_image.img
+          if [ "${{ inputs.build-target }}" = "rpi4" ]; then
+            ./build.sh --product-name ${{ inputs.build-target }} --ccache --build-target rpi_image
+          fi
+
+      - name: save ccache
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: /github/home/.ccache
+          key: build-ccache-${{ github.sha }}
+
+      - name: Archive board image artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.build-target }}-images
+          path: /__w/manifest/manifest/repo/out/${{ inputs.build-target }}/packages/phone/images/*
