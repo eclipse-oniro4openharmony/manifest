@@ -193,8 +193,8 @@
   <project name="hiviewdfx_hidumper" path="base/hiviewdfx/hidumper" groups="default,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="hiviewdfx_hidumper_lite" path="base/hiviewdfx/hidumper_lite" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="hiviewdfx_hilog" path="base/hiviewdfx/hilog" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
-  <project name="hiviewdfx_hitrace" remote="gitee" path="base/hiviewdfx/hitrace" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
-  <project name="hiviewdfx_hisysevent" remote="gitee" path="base/hiviewdfx/hisysevent" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
+  <project name="hiviewdfx_hitrace" path="base/hiviewdfx/hitrace" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
+  <project name="hiviewdfx_hisysevent" path="base/hiviewdfx/hisysevent" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="hiviewdfx_hiview" path="base/hiviewdfx/hiview" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="interface_sdk-js" path="interface/sdk-js" groups="default,ohos:small,ohos:standard,ohos:system"/>
   <project name="interface_sdk_c" path="interface/sdk_c" groups="default,ohos:small,ohos:standard,ohos:system"/>
