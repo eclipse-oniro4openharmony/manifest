@@ -327,7 +327,7 @@
   <project name="third_party_opensles" path="third_party/openSLES" groups="default,ohos:standard,ohos:system"/>
   <project name="third_party_libnl" path="third_party/libnl" groups="default,ohos:standard,ohos:system"/>
   <project name="third_party_openmax" path="third_party/openmax" groups="default,ohos:standard,ohos:system,ohos:chipset"/>
-  <project name="third_party_typescript" path="third_party/typescript" groups="default,ohos:standard,ohos:system"/>
+  <project name="third_party_typescript" remote="gitee" path="third_party/typescript" groups="default,ohos:standard,ohos:system"/>
   <project name="third_party_libexif" path="third_party/libexif" groups="default,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="third_party_astc-encoder" path="third_party/astc-encoder" groups="default,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="commonlibrary_memory_utils" path="commonlibrary/memory_utils" groups="default,ohos:standard,ohos:system"/>
@@ -438,7 +438,7 @@
   <project name="tee_tee_client" path="base/tee/tee_client" groups="default,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="graphic_graphic_surface" path="foundation/graphic/graphic_surface" groups="default,ohos:standard,ohos:system,ohos:chipset"/>
   <project name="third_party_notofonts" path="third_party/notofonts" groups="default,ohos:standard,ohos:system"/>
-  <project name="third_party_noto-cjk" path="third_party/noto-cjk" groups="default,ohos:standard,ohos:system"/>
+  <project name="third_party_noto-cjk" remote="gitee" path="third_party/noto-cjk" groups="default,ohos:standard,ohos:system"/>
   <project name="third_party_brotli" path="third_party/brotli" groups="default,ohos:standard,ohos:system"/>
   <project name="third_party_lame" path="third_party/lame" groups="default,ohos:standard,ohos:system"/>
   <project name="third_party_decimal.js" path="third_party/decimal.js" groups="default,ohos:standard,ohos:system"/>
