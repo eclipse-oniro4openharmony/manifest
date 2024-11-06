@@ -30,6 +30,8 @@ jobs:
             /__w/repo-mirrors/developtools_smartperf_host.git
             /__w/repo-mirrors/developtools_profiler.git
             /__w/repo-mirrors/global_i18n.git
+            /__w/repo-mirrors/kernel_linux_6.6.git
+            /__w/repo-mirrors/multimedia_audio_framework.git
             /__w/repo-mirrors/multimedia_av_codec.git
             /__w/repo-mirrors/update_updater.git
             /__w/repo-mirrors/xts_acts.git
@@ -91,6 +93,8 @@ jobs:
             /__w/repo-mirrors/developtools_smartperf_host.git
             /__w/repo-mirrors/developtools_profiler.git
             /__w/repo-mirrors/global_i18n.git
+            /__w/repo-mirrors/kernel_linux_6.6.git
+            /__w/repo-mirrors/multimedia_audio_framework.git
             /__w/repo-mirrors/multimedia_av_codec.git
             /__w/repo-mirrors/update_updater.git
             /__w/repo-mirrors/xts_acts.git
