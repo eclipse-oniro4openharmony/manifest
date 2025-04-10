@@ -34,8 +34,9 @@ Repository layout:
 ```
 manifest/
 ├── default.xml
-│   └── ohos/ohos.xml
-│   └── oniro.xml
+├── ohos
+│   └── ohos.xml
+├── oniro.xml
 └── chipsets/
     ├── all.xml
     ├── chipset1.xml
@@ -71,7 +72,7 @@ To support global developers, Oniro mirrors the source on its own infrastructure
 | Standard        | Chipset components | `repo init -u <URL> -b master -g ohos:chipset`                              | All chipset-related components.                  |
 | Standard        | Specific chipset components | `repo init -u <URL> -b master -m chipsets/chipsetN.xml -g ohos:chipset` | Specific chipset components only.                |
 
-Replace `<URL>` with the Oniro mirror URL. Fallback is gitee.com if mirror is unavailable.
+Replace `<URL>` with the [Oniro manifest](https://github.com/eclipse-oniro4openharmony/manifest.git).
 
 ## 4. `matrix_product.csv`
 
@@ -83,16 +84,6 @@ The [`matrix_product.csv`](https://gitee.com/openharmony/manifest/blob/master/ma
 
 ### Updating or Adding Repositories
 Add a new row for each new repository. Ensure the correct build and test profiles are filled in.
-
-### CI Pipeline Gatekeeping Rules
-1. **Precise PR builds** depend on accurate build/test mapping in `matrix_product.csv`. New or modified repositories must update this file.
-2. **TDD test suites** are provided and maintained by the owning team. Missing test mappings skip validation.
-3. **Component dependencies** are also maintained by the owning teams. If dependencies are defined, CI will perform a full 3-layer test cascade; otherwise, only the component itself is tested.
-
-### CI Validation
-To verify CI integration:
-- Leave a PR comment with `start build`
-- If the build does not trigger, ensure your repo is listed correctly in `matrix_product.csv`
 
 ---
 
