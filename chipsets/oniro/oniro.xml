@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote fetch="https://gitee.com/openharmony" name="origin" review="https://openharmony.gitee.com/openharmony/"/>
+  <remote fetch="https://gitcode.com/openharmony" name="gitcode" review="https://gitcode.com/openharmony/"/>
+  <remote fetch="https://github.com/eclipse-oniro-mirrors" name="oniro" review="https://gitcode.com/openharmony/"/> 
+  <remote fetch="https://github.com/eclipse-oniro4openharmony/" name="oniro4openharmony"/>
+  <default remote="oniro" revision="OpenHarmony-6.0-Release" sync-j="4"/>
+
+  <project name="device_board_oniro" path="device/board/oniro" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:chipset" remote="oniro4openharmony"/>
+  <project name="device_soc_oniro" path="device/soc/oniro" groups="default,ohos:standard,ohos:chipset" remote="oniro4openharmony"/>
+  <project name="vendor_oniro" path="vendor/oniro" groups="default,ohos:mini,ohos:standard,ohos:chipset" remote="oniro4openharmony"/>
+</manifest>
