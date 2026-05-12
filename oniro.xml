@@ -10,5 +10,6 @@
   <!-- chipsets --> 
   <include name="chipsets/dayu200/dayu200.xml" /> 
   <include name="chipsets/oniro/oniro.xml" /> 
+  <include name="chipsets/rpi/rpi.xml" />
    
 </manifest> 
