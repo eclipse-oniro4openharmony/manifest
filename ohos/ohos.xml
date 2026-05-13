@@ -481,6 +481,7 @@
   <project groups="default,ohos:standard,ohos:system" name="applications_user_certificate_manager" path="applications/standard/user_certificate_manager" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="distributedhardware_mechbody_controller" path="foundation/distributedhardware/mechbody_controller" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="game_game_controller_framework" path="domains/game/game_controller_framework" remote="oniro" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:standard,ohos:system,cangjie" name="docs_cangjie" path="docs_cangjie" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system,cangjie" name="arkcompiler_cangjie_ark_interop" path="arkcompiler/cangjie_ark_interop" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system,cangjie" name="filemanagement_filemanagement_cangjie_wrapper" path="foundation/filemanagement/filemanagement_cangjie_wrapper" remote="oniro" revision="OpenHarmony-6.1-Release" />
   <project groups="default,ohos:standard,ohos:system,cangjie" name="global_global_cangjie_wrapper" path="base/global/global_cangjie_wrapper" remote="oniro" revision="OpenHarmony-6.1-Release" />
@@ -515,4 +516,7 @@
   <project groups="default,ohos:standard,ohos:system" name="third_party_meshoptimizer" path="third_party/meshoptimizer" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="third_party_libtiff" path="third_party/libtiff" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="systemabilitymgr_selectionfwk" path="foundation/systemabilitymgr/selectionfwk" remote="oniro" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:standard,ohos:system" name="third_party_libvpx" path="third_party/libvpx" remote="oniro" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:standard,ohos:system" name="third_party_dav1d" path="third_party/dav1d" remote="oniro" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:mini,ohos:standard,ohos:system,ohos:chipset" name="communication_fusion_connectivity" path="foundation/communication/fusion_connectivity" remote="oniro" revision="OpenHarmony-6.1-Release"/>
 </manifest>
