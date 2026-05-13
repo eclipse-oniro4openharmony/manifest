@@ -178,7 +178,7 @@
   <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset" name="communication_t2stack" path="foundation/communication/t2stack" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="developtools_hdc" path="developtools/hdc" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="developtools_smartperf_host" path="developtools/smartperf_host" remote="oniro" revision="OpenHarmony-6.1-Release"/>
-  <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="developtools_profiler" path="developtools/profiler" remote="oniro" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="developtools_profiler" path="developtools/profiler" remote="gitcode" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="developtools_hiperf" path="developtools/hiperf" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system" name="developtools_global_resource_tool" path="developtools/global_resource_tool" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="distributeddatamgr_relational_store" path="foundation/distributeddatamgr/relational_store" remote="oniro" revision="OpenHarmony-6.1-Release"/>
@@ -229,7 +229,7 @@
   <project groups="default,ohos:standard,ohos:system" name="distributeddatamgr_pasteboard" path="foundation/distributeddatamgr/pasteboard" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="request_request" path="base/request/request" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="print_print_fwk" path="base/print/print_fwk" remote="oniro" revision="OpenHarmony-6.1-Release"/>
-  <project groups="default,ohos:standard,ohos:system" name="multimedia_audio_framework" path="foundation/multimedia/audio_framework" remote="oniro" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:standard,ohos:system" name="multimedia_audio_framework" path="foundation/multimedia/audio_framework" remote="gitcode" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="multimedia_camera_framework" path="foundation/multimedia/camera_framework" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system" name="multimedia_media_foundation" path="foundation/multimedia/media_foundation" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="multimedia_player_framework" path="foundation/multimedia/player_framework" remote="oniro" revision="OpenHarmony-6.1-Release"/>
