@@ -11,6 +11,15 @@
   <project name="device_soc_oniro" path="device/soc/oniro" groups="default,ohos:standard,ohos:chipset" remote="oniro4openharmony"/>
   <project name="vendor_oniro" path="vendor/oniro" groups="default,ohos:mini,ohos:standard,ohos:chipset" remote="oniro4openharmony"/>
 
+  <!-- libhybris + Android headers for the hybris_generic port -->
+  <project name="libhybris" path="third_party/libhybris"
+           remote="oniro4openharmony"
+           groups="default,ohos:standard,ohos:chipset"/>
+  <project name="Halium/android-headers" path="third_party/android-headers"
+           remote="github"
+           revision="halium-11.0"
+           groups="default,ohos:standard,ohos:chipset"/>
+
   <!-- Panda (Ark) x86_64 codegen dependencies, vendored for Oniro x86_general.
        Local OH adaptations are reapplied via vendor/oniro/x86_general/hook/. -->
   <project name="asmjit/asmjit" path="third_party/asmjit"
