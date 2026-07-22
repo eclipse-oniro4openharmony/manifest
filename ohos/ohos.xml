@@ -177,7 +177,7 @@
   <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset" name="communication_dhcp" path="foundation/communication/dhcp" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset" name="communication_t2stack" path="foundation/communication/t2stack" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="developtools_hdc" path="developtools/hdc" remote="oniro" revision="OpenHarmony-6.1-Release"/>
-  <project groups="default,ohos:standard,ohos:system" name="developtools_smartperf_host" path="developtools/smartperf_host" remote="oniro" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:standard,ohos:system" name="developtools_smartperf_host" path="developtools/smartperf_host" remote="gitcode" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="developtools_profiler" path="developtools/profiler" remote="gitcode" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="developtools_hiperf" path="developtools/hiperf" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system" name="developtools_global_resource_tool" path="developtools/global_resource_tool" remote="oniro" revision="OpenHarmony-6.1-Release"/>
@@ -191,13 +191,13 @@
   <project groups="default,ohos:standard,ohos:system" name="ability_dmsfwk" path="foundation/ability/dmsfwk" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset" name="systemabilitymgr_safwk" path="foundation/systemabilitymgr/safwk" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset" name="systemabilitymgr_samgr" path="foundation/systemabilitymgr/samgr" remote="oniro" revision="OpenHarmony-6.1-Release"/>
-  <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system" name="docs" path="docs" remote="oniro" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system" name="docs" path="docs" remote="gitcode" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="filemanagement_dfs_service" path="foundation/filemanagement/dfs_service" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="filemanagement_file_api" path="foundation/filemanagement/file_api" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="filemanagement_storage_service" path="foundation/filemanagement/storage_service" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="filemanagement_user_file_service" path="foundation/filemanagement/user_file_service" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="filemanagement_app_file_service" path="foundation/filemanagement/app_file_service" remote="oniro" revision="OpenHarmony-6.1-Release"/>
-  <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system" name="global_i18n" path="base/global/i18n" remote="oniro" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system" name="global_i18n" path="base/global/i18n" remote="gitcode" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="global_resource_management" path="base/global/resource_management" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="global_timezone" path="base/global/timezone" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="graphic_graphic_2d" path="foundation/graphic/graphic_2d" remote="oniro" revision="OpenHarmony-6.1-Release"/>
@@ -221,8 +221,8 @@
   <project groups="default,ohos:small,ohos:standard,ohos:chipset" name="kernel_linux_config" path="kernel/linux/config" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:small,ohos:standard,ohos:chipset,ohos:system" name="kernel_linux_patches" path="kernel/linux/patches" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:small,ohos:standard,ohos:chipset" name="kernel_linux_build" path="kernel/linux/build" remote="oniro" revision="OpenHarmony-6.1-Release"/>
-  <project groups="default,ohos:small,ohos:standard,ohos:system,ohos:chipset" clone-depth="1" name="kernel_linux_5.10" path="kernel/linux/linux-5.10" remote="oniro" revision="OpenHarmony-6.1-Release"/>
-  <project groups="default,ohos:small,ohos:standard,ohos:system,ohos:chipset" clone-depth="1" name="kernel_linux_6.6" path="kernel/linux/linux-6.6" remote="oniro" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:small,ohos:standard,ohos:system,ohos:chipset" clone-depth="1" name="kernel_linux_5.10" path="kernel/linux/linux-5.10" remote="gitcode" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:small,ohos:standard,ohos:system,ohos:chipset" clone-depth="1" name="kernel_linux_6.6" path="kernel/linux/linux-6.6" remote="gitcode" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="time_time_service" path="base/time/time_service" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="theme_wallpaper_mgr" path="base/theme/wallpaper_mgr" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="theme_screenlock_mgr" path="base/theme/screenlock_mgr" remote="oniro" revision="OpenHarmony-6.1-Release"/>
@@ -310,12 +310,12 @@
   <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="third_party_selinux" path="third_party/selinux" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="update_update_app" path="base/update/update_app" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="update_packaging_tools" path="base/update/packaging_tools" remote="oniro" revision="OpenHarmony-6.1-Release"/>
-  <project groups="default,ohos:standard,ohos:system" name="update_updater" path="base/update/updater" remote="oniro" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:standard,ohos:system" name="update_updater" path="base/update/updater" remote="gitcode" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="update_update_service" path="base/update/updateservice" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="update_sys_installer" path="base/update/sys_installer" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset" name="commonlibrary_c_utils" path="commonlibrary/c_utils" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="usb_usb_manager" path="base/usb/usb_manager" remote="oniro" revision="OpenHarmony-6.1-Release"/>
-  <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system" name="xts_acts" path="test/xts/acts" remote="oniro" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system" name="xts_acts" path="test/xts/acts" remote="gitcode" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="xts_device_attest" path="test/xts/device_attest" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:mini,ohos:small,ohos:system" name="xts_device_attest_lite" path="test/xts/device_attest_lite" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset" name="distributedhardware_device_manager" path="foundation/distributedhardware/device_manager" remote="oniro" revision="OpenHarmony-6.1-Release"/>
@@ -356,7 +356,7 @@
   <project groups="default,ohos:standard,ohos:system" name="commonlibrary_memory_utils" path="commonlibrary/memory_utils" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="msdp_device_status" path="base/msdp/device_status" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset" name="developtools_syscap_codec" path="developtools/syscap_codec" remote="oniro" revision="OpenHarmony-6.1-Release"/>
-  <project groups="default,ohos:standard,ohos:system" clone-depth="1" name="third_party_mindspore" path="third_party/mindspore" remote="oniro" revision="OpenHarmony-6.1-Release">
+  <project groups="default,ohos:standard,ohos:system" clone-depth="1" name="third_party_mindspore" path="third_party/mindspore" remote="gitcode" revision="OpenHarmony-6.1-Release">
       <linkfile dest="foundation/ai/mindspore" src="."/>
   </project>
   <project groups="default,ohos:standard,ohos:system" name="web_webview" path="base/web/webview" remote="oniro" revision="OpenHarmony-6.1-Release"/>
@@ -373,7 +373,7 @@
   <project groups="default,ohos:standard,ohos:system" name="security_privacy_center" path="applications/standard/security_privacy_center" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system" name="ai_neural_network_runtime" path="foundation/ai/neural_network_runtime" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="third_party_libbpf" path="third_party/libbpf" remote="oniro" revision="OpenHarmony-6.1-Release"/>
-  <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset" name="third_party_vk-gl-cts" path="third_party/vk-gl-cts" remote="oniro" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset" name="third_party_vk-gl-cts" path="third_party/vk-gl-cts" remote="gitcode" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset" name="third_party_spirv-tools" path="third_party/spirv-tools" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset" name="third_party_glslang" path="third_party/glslang" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:mini,ohos:small,ohos:standard,ohos:system,ohos:chipset" name="third_party_spirv-headers" path="third_party/spirv-headers" remote="oniro" revision="OpenHarmony-6.1-Release"/>
@@ -425,7 +425,7 @@
   <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="third_party_rust_proc-macro-error" path="third_party/rust/crates/proc-macro-error" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="third_party_rust_quote" path="third_party/rust/crates/quote" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="third_party_rust_regex" path="third_party/rust/crates/regex" remote="oniro" revision="OpenHarmony-6.1-Release"/>
-  <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="third_party_rust_rust" path="third_party/rust/rust" remote="oniro" revision="OpenHarmony-6.1-Release"/>
+  <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="third_party_rust_rust" path="third_party/rust/rust" remote="gitcode" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="third_party_rust_rustc-hash" path="third_party/rust/crates/rustc-hash" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="third_party_rust_rustix" path="third_party/rust/crates/rustix" remote="oniro" revision="OpenHarmony-6.1-Release"/>
   <project groups="default,ohos:standard,ohos:system,ohos:chipset" name="third_party_rust_shlex" path="third_party/rust/crates/shlex" remote="oniro" revision="OpenHarmony-6.1-Release"/>
