@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote fetch="https://gitee.com/openharmony" name="origin" review="https://openharmony.gitee.com/openharmony/"/>
+  <remote fetch="https://gitcode.com/openharmony" name="gitcode" review="https://gitcode.com/openharmony/"/>
+  <remote fetch="https://github.com/eclipse-oniro-mirrors" name="oniro" review="https://gitcode.com/openharmony/"/> 
+  <remote fetch="https://github.com/eclipse-oniro4openharmony/" name="oniro4openharmony"/>
+  <remote fetch="https://github.com" name="github"/>
+  <default remote="oniro" revision="OpenHarmony-6.1-LTS" sync-j="4"/>
+
+  <project name="device_board_oniro" path="device/board/oniro" groups="default,ohos:mini,ohos:small,ohos:standard,ohos:chipset" remote="oniro4openharmony"/>
+  <project name="device_soc_oniro" path="device/soc/oniro" groups="default,ohos:standard,ohos:chipset" remote="oniro4openharmony"/>
+  <project name="vendor_oniro" path="vendor/oniro" groups="default,ohos:mini,ohos:standard,ohos:chipset" remote="oniro4openharmony"/>
+
+  <!-- libhybris + Android headers for the hybris_generic port -->
+  <project name="libhybris" path="third_party/libhybris"
+           remote="oniro4openharmony"
+           groups="default,ohos:standard,ohos:chipset"/>
+  <project name="Halium/android-headers" path="third_party/android-headers"
+           remote="github"
+           revision="halium-11.0"
+           groups="default,ohos:standard,ohos:chipset"/>
+
+  <!-- Panda (Ark) x86_64 codegen dependencies, vendored for Oniro x86_general.
+       Local OH adaptations are reapplied via vendor/oniro/x86_general/hook/. -->
+  <project name="asmjit/asmjit" path="third_party/asmjit"
+           remote="github"
+           revision="8474400e82c3ea65bd828761539e5d9b25f6bd83"
+           groups="default,ohos:standard,ohos:chipset"
+           sync-c="true"
+           upstream="master"/>
+  <project name="zyantific/zydis" path="third_party/zydis"
+           remote="github"
+           revision="refs/tags/v3.2.1"
+           groups="default,ohos:standard,ohos:chipset"
+           sync-c="true"
+           upstream="master"/>
+  <!-- Pinned to the gitlink recorded in zydis@v3.2.1's tree at dependencies/zycore.
+       Kept as a separate <project> rather than `sync-s="true"` on zydis because
+       repo v2.64 does not auto-init git submodules across all sync paths. -->
+  <project name="zyantific/zycore-c" path="third_party/zydis/dependencies/zycore"
+           remote="github"
+           revision="6c93d9a38e62d4db82f99bf99159e1ee78341e36"
+           groups="default,ohos:standard,ohos:chipset"
+           sync-c="true"
+           upstream="master"/>
+</manifest>
