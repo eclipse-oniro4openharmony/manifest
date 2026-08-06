@@ -1,0 +1,75 @@
+# Notices for Eclipse Oniro for OpenHarmony
+
+This content is produced and maintained by the Eclipse Oniro for OpenHarmony
+project (distribution manifest).
+
+## Source Code
+
+The project maintains the following source code repository for this content:
+
+* https://github.com/eclipse-oniro4openharmony/manifest
+
+## Copyright
+
+All content is the property of the respective authors or their employers. For
+more information regarding authorship of content, please consult the listed
+source code repository logs.
+
+## Declared Project License
+
+This program and the accompanying materials are made available under the terms
+of the Apache License, Version 2.0, which is available at
+https://www.apache.org/licenses/LICENSE-2.0.
+
+    SPDX-License-Identifier: Apache-2.0
+
+## Third-party Content
+
+This repository includes the following third-party content. Their licenses
+govern those files, not the project's declared Apache-2.0 license.
+
+OpenHarmony manifest data
+* Files: ohos/ohos.xml, default.xml, tag/**, matrix_product.csv, codecheck.xml
+* Derived from the OpenAtom OpenHarmony project's manifest repository. The
+  repositories these manifests reference under `eclipse-oniro-mirrors` are
+  unmodified mirrors of upstream OpenAtom OpenHarmony content.
+* License: Apache-2.0
+* Project: https://gitcode.com/openharmony/manifest
+
+## Content referenced by this manifest
+
+This repository ships no third-party source itself. It is a set of `repo`
+manifests, so what it *references* determines what a `repo sync` fetches. The
+projects below are listed for due-diligence purposes; each is governed by the
+license of its own repository.
+
+Eclipse-hosted, maintained by this project (`eclipse-oniro4openharmony`)
+* `device_board_oniro`, `device_soc_oniro`, `vendor_oniro` — Apache-2.0
+* `libhybris` — a fork of upstream libhybris carrying the OpenHarmony
+  adaptation. Apache-2.0 AND BSD-2-Clause AND ISC AND MIT for the code its
+  OpenHarmony build produces; see that repository's NOTICE, which also records
+  the LGPL-2.1 Wayland backends that ship in its tree but are never compiled.
+* `device_board_rpi`, `device_soc_broadcom`, `vendor_iscas` — Raspberry Pi
+  board support, Apache-2.0, referenced from `chipsets/rpi/rpi.xml`. These
+  carry committed third-party binaries (Broadcom/Raspberry Pi GPU firmware and
+  prebuilt Mesa libraries); see their own repositories for the applicable
+  terms.
+
+Unmodified upstream OpenHarmony mirrors (`eclipse-oniro-mirrors`)
+* ~479 repositories referenced by `ohos/ohos.xml` and `chipsets/dayu200`.
+  Content is OpenAtom OpenHarmony's; each upstream repository carries its own
+  `OAT.xml` license declaration.
+
+Third-party projects fetched from their own upstreams
+* `asmjit/asmjit` — Zlib — https://github.com/asmjit/asmjit
+* `zyantific/zydis` — MIT — https://github.com/zyantific/zydis
+* `zyantific/zycore-c` — MIT — https://github.com/zyantific/zycore-c
+* `Halium/android-headers` — Apache-2.0 (Android Open Source Project headers)
+  — https://github.com/Halium/android-headers
+
+Projects fetched from gitcode.com/openharmony
+* A small number of upstream OpenHarmony repositories that are too large to
+  mirror are fetched directly from `gitcode.com/openharmony` rather than from
+  `eclipse-oniro-mirrors`. They are upstream OpenAtom OpenHarmony content on
+  the same terms as the mirrored repositories; the difference is only which
+  server serves them.
